@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		0EAF0EC428FE2DC200DD41EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0EC328FE2DC200DD41EA /* AppDelegate.swift */; };
 		0EAF0EC628FE2DC200DD41EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0EC528FE2DC200DD41EA /* SceneDelegate.swift */; };
-		0EAF0EC828FE2DC200DD41EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0EC728FE2DC200DD41EA /* ViewController.swift */; };
+		0EAF0EC828FE2DC200DD41EA /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0EC728FE2DC200DD41EA /* SimpleTableViewController.swift */; };
 		0EAF0ECB28FE2DC200DD41EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0EC928FE2DC200DD41EA /* Main.storyboard */; };
 		0EAF0ECD28FE2DC400DD41EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0ECC28FE2DC400DD41EA /* Assets.xcassets */; };
 		0EAF0ED028FE2DC400DD41EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0ECE28FE2DC400DD41EA /* LaunchScreen.storyboard */; };
+		0EAF0ED828FE390B00DD41EA /* SimpleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0EAF0EC028FE2DC200DD41EA /* SeSAC2Week1617.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC2Week1617.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EAF0EC328FE2DC200DD41EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EAF0EC528FE2DC200DD41EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0EAF0EC728FE2DC200DD41EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0EAF0EC728FE2DC200DD41EA /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 		0EAF0ECA28FE2DC200DD41EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0EAF0ECC28FE2DC400DD41EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EAF0ECF28FE2DC400DD41EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EAF0ED128FE2DC400DD41EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				0EAF0EC328FE2DC200DD41EA /* AppDelegate.swift */,
 				0EAF0EC528FE2DC200DD41EA /* SceneDelegate.swift */,
-				0EAF0EC728FE2DC200DD41EA /* ViewController.swift */,
+				0EAF0EC728FE2DC200DD41EA /* SimpleTableViewController.swift */,
 				0EAF0EC928FE2DC200DD41EA /* Main.storyboard */,
+				0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */,
 				0EAF0ECC28FE2DC400DD41EA /* Assets.xcassets */,
 				0EAF0ECE28FE2DC400DD41EA /* LaunchScreen.storyboard */,
 				0EAF0ED128FE2DC400DD41EA /* Info.plist */,
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EAF0EC828FE2DC200DD41EA /* ViewController.swift in Sources */,
+				0EAF0ED828FE390B00DD41EA /* SimpleCollectionViewController.swift in Sources */,
+				0EAF0EC828FE2DC200DD41EA /* SimpleTableViewController.swift in Sources */,
 				0EAF0EC428FE2DC200DD41EA /* AppDelegate.swift in Sources */,
 				0EAF0EC628FE2DC200DD41EA /* SceneDelegate.swift in Sources */,
 			);
