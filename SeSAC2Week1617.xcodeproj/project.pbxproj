@@ -14,6 +14,7 @@
 		0EAF0ECD28FE2DC400DD41EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0ECC28FE2DC400DD41EA /* Assets.xcassets */; };
 		0EAF0ED028FE2DC400DD41EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0ECE28FE2DC400DD41EA /* LaunchScreen.storyboard */; };
 		0EAF0ED828FE390B00DD41EA /* SimpleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */; };
+		0EAF0EF628FF90DA00DD41EA /* DiffableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0EF528FF90DA00DD41EA /* DiffableCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0EAF0ECF28FE2DC400DD41EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EAF0ED128FE2DC400DD41EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewController.swift; sourceTree = "<group>"; };
+		0EAF0EF528FF90DA00DD41EA /* DiffableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				0EAF0EC328FE2DC200DD41EA /* AppDelegate.swift */,
 				0EAF0EC528FE2DC200DD41EA /* SceneDelegate.swift */,
 				0EAF0EC728FE2DC200DD41EA /* SimpleTableViewController.swift */,
+				0EAF0EF528FF90DA00DD41EA /* DiffableCollectionViewController.swift */,
 				0EAF0EC928FE2DC200DD41EA /* Main.storyboard */,
 				0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */,
 				0EAF0ECC28FE2DC400DD41EA /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EAF0EF628FF90DA00DD41EA /* DiffableCollectionViewController.swift in Sources */,
 				0EAF0ED828FE390B00DD41EA /* SimpleCollectionViewController.swift in Sources */,
 				0EAF0EC828FE2DC200DD41EA /* SimpleTableViewController.swift in Sources */,
 				0EAF0EC428FE2DC200DD41EA /* AppDelegate.swift in Sources */,
