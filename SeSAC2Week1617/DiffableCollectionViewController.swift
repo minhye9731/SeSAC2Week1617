@@ -12,23 +12,33 @@ class DiffableCollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var viewModel = DiffableViewModel()
+    
     var list = ["아이폰", "아이패드", "에어팟", "맥북", "애플워치"]
     
     // 이거 삭제해도 됨, configureDataSource에서만 쓰니까
 //    private var cellRegisteration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
     // Int:  , String:
-    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         collectionView.collectionViewLayout = createLayout()
         configureDataSource()
         collectionView.delegate = self
         
         searchBar.delegate = self
+        
+        viewModel.photoList.bind { photo in
+            var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+            snapshot.appendSections([0])
+            snapshot.appendItems(photo.results)
+            self.dataSource.apply(snapshot)
+        }
     }
     
 
@@ -54,6 +64,8 @@ extension DiffableCollectionViewController: UISearchBarDelegate {
         var snapshoit = dataSource.snapshot()
         snapshoit.appendItems([searchBar.text!])
         dataSource.apply(snapshoit, animatingDifferences: true)
+        
+        viewModel.requestSearchPhoto(query: searchBar)
     }
 
 }
@@ -72,10 +84,25 @@ extension DiffableCollectionViewController {
         // 근데 이전의 < , > 타입명시도 위에서 삭제했으니까 타입을 추론할 근거가 없어서 에[러가 남.
         
         let cellRegisteration = UICollectionView.CellRegistration<UICollectionViewListCell, String>(handler: { cell, indexPath, itemIdentifier in
+            
             var content = UIListContentConfiguration.valueCell()
-            content.text = itemIdentifier
-            content.secondaryText = "\(itemIdentifier.count)"
-            cell.contentConfiguration = content
+            content.text = "\(itemIdentifier.likes)"
+            
+            let url = URL(string: "adsfd")
+            
+            // 굳이 asnc하는 이유는 이 작업이 되는동안 앱이 얼지 안혿록 하기 위해
+            // string > url > data > image
+            DispatchQueue.global().async {
+                let url = URL(string: itemIdentifier.urls.thumb)!
+                let data = try? Data(contentsOf: url)
+                
+                DispatchQueue.main.async {
+                    content.image = UIImage(data: data!)
+                    cell.contentConfiguration = content // 여기에 넣어주어야 하는게 중요함.
+                    // 왜햐면 content를 configuration에 할당이 끝나고 나서야 이미지가 로드되어서 타이밍이 맞도록 하기 위해 두개 코드 모두 dispatch main 에다가 적어주어야 함
+                }
+            }
+            
             
             var background = UIBackgroundConfiguration.listPlainCell()
             background.strokeWidth = 2
@@ -91,10 +118,10 @@ extension DiffableCollectionViewController {
         })
         
         // Initial
-        var snapshop = NSDiffableDataSourceSnapshot<Int, String>()
-        snapshop.appendSections([0])
-        snapshop.appendItems(list)
-        dataSource.apply(snapshop)
+//        var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+//        snapshot.appendSections([0])
+//        snapshot.appendItems(list)
+//        dataSource.apply(snapshot)
         
         
         
