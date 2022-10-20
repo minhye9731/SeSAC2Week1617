@@ -43,7 +43,9 @@ class NewsViewController: UIViewController {
     
     func configureView() {
         numberTextField.addTarget(self, action: #selector(numberTextFieldChanged), for: .editingChanged)
+        
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        
         loadButton.addTarget(self, action: #selector(loadButtonTapped), for: .touchUpInside)
     }
     
@@ -87,10 +89,10 @@ extension NewsViewController {
             return cell
         })
         
-        var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(News.items)
-        dataSource.apply(snapshot, animatingDifferences: false)
+//        var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
+//        snapshot.appendSections([0])
+//        snapshot.appendItems(News.items)
+//        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     func createLayout() -> UICollectionViewLayout {

@@ -72,6 +72,18 @@
 			path = MVVMSample;
 			sourceTree = "<group>";
 		};
+		0E75B5562901B73000F40F7A /* Unsplash */ = {
+			isa = PBXGroup;
+			children = (
+				0E75B54E2900EF7500F40F7A /* SearchPhoto.swift */,
+				0EAF0EF528FF90DA00DD41EA /* DiffableCollectionViewController.swift */,
+				0E75B5462900ED7700F40F7A /* DiffableViewModel.swift */,
+				0E75B5482900EDEC00F40F7A /* APIService.swift */,
+				0E75B54C2900EE5D00F40F7A /* APIKey.swift */,
+			);
+			path = Unsplash;
+			sourceTree = "<group>";
+		};
 		0EAF0EB728FE2DC200DD41EA = {
 			isa = PBXGroup;
 			children = (
@@ -97,14 +109,10 @@
 				0EAF0EC728FE2DC200DD41EA /* SimpleTableViewController.swift */,
 				0EAF0EC928FE2DC200DD41EA /* Main.storyboard */,
 				0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */,
-				0EAF0EF528FF90DA00DD41EA /* DiffableCollectionViewController.swift */,
 				0EAF0ECC28FE2DC400DD41EA /* Assets.xcassets */,
 				0EAF0ECE28FE2DC400DD41EA /* LaunchScreen.storyboard */,
 				0EAF0ED128FE2DC400DD41EA /* Info.plist */,
-				0E75B5462900ED7700F40F7A /* DiffableViewModel.swift */,
-				0E75B5482900EDEC00F40F7A /* APIService.swift */,
-				0E75B54C2900EE5D00F40F7A /* APIKey.swift */,
-				0E75B54E2900EF7500F40F7A /* SearchPhoto.swift */,
+				0E75B5562901B73000F40F7A /* Unsplash */,
 			);
 			path = SeSAC2Week1617;
 			sourceTree = "<group>";

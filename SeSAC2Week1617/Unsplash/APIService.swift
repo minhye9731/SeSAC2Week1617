@@ -11,6 +11,7 @@ import Alamofire
 class APIService {
     
     static func searchPhoto(query: String, completion: @escaping (SearchPhoto?, Int?, Error?) -> Void) {
+        
         let url = "\(APIKey.searchURL)\(query)"
         let header: HTTPHeaders = ["Authorization": APIKey.authorization]
         
@@ -20,16 +21,13 @@ class APIService {
             
             switch response.result {
             case .success(let value): completion(value, statusCode, nil)
+                print("통신 성공이다")
             case .failure(let error): completion(nil, statusCode, error)
             }
         }
     }
-    
-    
-    
-    
+
     private init() { }
-    
     
 }
 
