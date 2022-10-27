@@ -31,6 +31,8 @@
 		0EC7E6E5290622FF00DFE2DF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0EC7E6E4290622FF00DFE2DF /* RxCocoa */; };
 		0EC7E6E7290622FF00DFE2DF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0EC7E6E6290622FF00DFE2DF /* RxSwift */; };
 		0EC7E6EA290625BA00DFE2DF /* RxCocoaExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7E6E9290625BA00DFE2DF /* RxCocoaExampleViewController.swift */; };
+		0EF23DB0290A07B8003E533B /* ValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF23DAF290A07B8003E533B /* ValidationViewController.swift */; };
+		0EF23DB2290A22DE003E533B /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF23DB1290A22DE003E533B /* ValidationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		0EAF0ED728FE390B00DD41EA /* SimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewController.swift; sourceTree = "<group>"; };
 		0EAF0EF528FF90DA00DD41EA /* DiffableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewController.swift; sourceTree = "<group>"; };
 		0EC7E6E9290625BA00DFE2DF /* RxCocoaExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaExampleViewController.swift; sourceTree = "<group>"; };
+		0EF23DAF290A07B8003E533B /* ValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewController.swift; sourceTree = "<group>"; };
+		0EF23DB1290A22DE003E533B /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 				0EC7E6E9290625BA00DFE2DF /* RxCocoaExampleViewController.swift */,
 				0E7A942729077AAB00D094D4 /* SubjectViewcontroller.swift */,
 				0E7A9429290788AE00D094D4 /* SubjectViewModel.swift */,
+				0EF23DAF290A07B8003E533B /* ValidationViewController.swift */,
+				0EF23DB1290A22DE003E533B /* ValidationViewModel.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -224,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E7A942C2908CBEB00D094D4 /* SubscribeViewController.swift in Sources */,
+				0EF23DB0290A07B8003E533B /* ValidationViewController.swift in Sources */,
 				0E75B53F2900CF9F00F40F7A /* CObservable.swift in Sources */,
+				0EF23DB2290A22DE003E533B /* ValidationViewModel.swift in Sources */,
 				0EAF0EF628FF90DA00DD41EA /* DiffableCollectionViewController.swift in Sources */,
 				0EAF0ED828FE390B00DD41EA /* SimpleCollectionViewController.swift in Sources */,
 				0E75B5452900D77F00F40F7A /* News.swift in Sources */,

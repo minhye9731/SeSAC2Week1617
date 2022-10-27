@@ -59,9 +59,9 @@ class SubjectViewcontroller: UIViewController {
             .disposed(by: disposeBag)
         
         searchBar.rx.text.orEmpty
+            .distinctUntilChanged() // 같은 값을 받지 않음
             .withUnretained(self)
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance) // wait
-//            .distinctUntilChanged() // 같은 값을 받지 않음 - 에러나서 내일 확인해볼 것임.
             .subscribe { (vc, value) in
                 print("=====\(value)")
                 vc.viewModel.filterData(query: value)
@@ -77,10 +77,14 @@ class SubjectViewcontroller: UIViewController {
 //extension SubjectViewcontroller {
 //
 //    func asyncSubject() {
-//        async.onNext(1)
-//        async.onNext(200) // 이렇게 버로 이전 것만 의미있는 것임
+//        async.onNext(100)
+//        async.onNext(200)
+//        async.onNext(300)
+//        async.onNext(400)
+//        async.onNext(500)
 //
-//        publish
+//        // observable
+//        async
 //            .subscribe { value in
 //                print("async - \(value)")
 //            } onError: { error in
@@ -88,21 +92,25 @@ class SubjectViewcontroller: UIViewController {
 //            } onCompleted: {
 //                print("async onCompleted")
 //            } onDisposed: {
-//                print("async isposed")
+//                print("async disposed")
 //            }
 //            .disposed(by: disposeBag)
 //
+//        //observer
 //        async.onNext(3)
 //        async.onNext(4)
 //        async.on(.next(5))
 //
 //        async.onCompleted() // 만약 이게 없다면, 안뜬다. 이게 전달이 되면 실행이 된다.
 //
+//        // 그래서 여기 아래 두개는 실행되지 않음
+//        // 왜? subscribe한 observable 시퀀스가 위에서 onCompleted 되어서
 //        async.onNext(6)
 //        async.onNext(7)
 //    }
 //
 //    func replaySubject() {
+//        // bufferSize에 작성이 된 이벤트 만큼, 메모리에 이벤트를 가지고 있다가 subscribe를 한 직후에 한 번에 이벤트를 전달
 //        // BufferSize 메모리, array, 이미지
 //
 //        replay.onNext(100)
@@ -111,22 +119,39 @@ class SubjectViewcontroller: UIViewController {
 //        replay.onNext(400)
 //        replay.onNext(500)
 //
+//        // observable
 //        replay
 //            .subscribe { value in
 //                print("replay - \(value)")
 //            } onError: { error in
 //                print("replay - \(error)")
+//            } onCompleted: {
+//                print("replay onCompleted")
+//            } onDisposed: {
+//                print("replay disposed")
 //            }
+//            .disposed(by: disposeBag)
+//
+//        replay.onNext(3)
+//        replay.onNext(4)
+//        replay.on(.next(5))
+//
+//        replay.onCompleted()
+//
+//        // 아래 두개는 실행되지 않음
+//        // 왜? 얘도 subscribe한 observable 시퀀스가 위에서 onCompleted 되어서
+//        replay.onNext(6)
+//        replay.onNext(7)
+//
 //    }
 //
 //    func publishSubject() {
-//        // 구독 전에 가장 최근 값을 같이 emit
+//        // 초기값이 없는 빈 상태
+//        // subscribe 이후 시점부터 emit되는 이벤트는 다 처리
+//        // subscribe 전 emit된 이벤트들은 무시
 //
-//        // 초기값이 없는 빈 상태, subscribe 전/error/completed notification 이후 이벤트 위
-//        // subscribe후에 해당 이벤트르는 다 처리
-//
-//        publish.onNext(1)
-//        publish.onNext(200) // 이렇게 버로 이전 것만 의미있는 것임
+//        publish.onNext(1) // 무시
+//        publish.onNext(2) // 무시
 //
 //        publish
 //            .subscribe { value in
@@ -140,9 +165,50 @@ class SubjectViewcontroller: UIViewController {
 //            }
 //            .disposed(by: disposeBag)
 //
-//        behavior.onNext(1)
-//        behavior.onNext(1)
+//        publish.onNext(3)
+//        publish.onNext(4)
+//        publish.on(.next(5))
 //
+//        publish.onCompleted()
+//
+//        // 아래 두개는 실행되지 않음
+//        // 왜? 얘도 subscribe한 observable 시퀀스가 위에서 onCompleted 되어서
+//        publish.onNext(6)
+//        publish.onNext(7)
+//
+//
+//    }
+//
+//    func behaviorSubject() {
+//        // 초기값 필수
+//        // subscribe 이후 시점부터 emit되는 이벤트는 다 처리 & 이전 시점에 emit된 이벤트 있으면 가장 최근거 하나만 전달
+//        // 만약 subscribe 이전에 emit한 이벤트가 아예 없다? -> 초기값 전달함
+//
+//        publish.onNext(1)
+//        publish.onNext(200) // 이렇게 버로 이전 것만 의미있는 것임
+//
+//        behavior
+//            .subscribe { value in
+//                print("behavior - \(value)")
+//            } onError: { error in
+//                print("behavior - \(error)")
+//            } onCompleted: {
+//                print("behavior onCompleted")
+//            } onDisposed: {
+//                print("behavior isposed")
+//            }
+//            .disposed(by: disposeBag)
+//
+//        behavior.onNext(3)
+//        behavior.onNext(4)
+//        behavior.on(.next(5))
+//
+//        behavior.onCompleted()
+//
+//        // 아래 두개는 실행되지 않음
+//        // 왜? 얘도 subscribe한 observable 시퀀스가 위에서 onCompleted 되어서
+//        behavior.onNext(6)
+//        behavior.onNext(7)
 //
 //    }
 //}

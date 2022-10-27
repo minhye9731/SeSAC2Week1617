@@ -33,6 +33,7 @@ class SubscribeViewController: UIViewController {
         button.rx.tap
             .withUnretained(self)
             .subscribe { (vc, _) in
+                
                 vc.label.text = "안녕 반가워"
             }
             .disposed(by: disposeBag)

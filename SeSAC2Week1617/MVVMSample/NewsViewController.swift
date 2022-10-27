@@ -76,16 +76,11 @@ class NewsViewController: UIViewController {
 //    @objc func loadButtonTapped() {
 //        viewModel.loadSample()
 //    }
-    
-    
-    
-    
-    @objc func numberTextFieldChanged() {
-        guard let text = numberTextField.text else { return }
-        viewModel.changePageNumberFormat(text: text)
-    }
-    
-    
+//
+//    @objc func numberTextFieldChanged() {
+//        guard let text = numberTextField.text else { return }
+//        viewModel.changePageNumberFormat(text: text)
+//    }
 
 }
 
