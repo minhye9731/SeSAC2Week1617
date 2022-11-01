@@ -22,12 +22,41 @@ class ValidationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        observableVSSubject()
     }
     
 
     func bind() {
         
-        viewModel.validText
+        // MARK: - After
+        let input = ValidationViewModel.Input(text: nameTextField.rx.text, tap: stepButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        output.validStatus
+            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden) // subscribe해줘도 되지만 bind로 해줌. (UI 특성을 살리고, error나 complete결과를 만날 필요가 없을때는 bind를 씀)
+            .disposed(by: disposeBag)
+        
+        output.validText
+            .drive(validationLabel.rx.text) // 여기서는 에러가 안나지만(1)
+            .disposed(by: disposeBag)
+        
+        output.validStatus
+            .withUnretained(self)
+            .bind { (vc, value) in
+                let color: UIColor = value ? .systemPink : .lightGray
+                vc.stepButton.backgroundColor = color
+            }
+            .disposed(by: disposeBag)
+
+        output.tap // VC -> VM (Input)
+            .bind { _ in
+                print("show alert")
+            }
+            .disposed(by: disposeBag)
+        
+
+        // MARK: - Before
+        viewModel.validText // VM -> VC (Output)
             .asDriver() // drive를 쓰려면 항상 trait으로 쓰겠다는 명시가 필요해서 asDriver를 같이 써줘야 함
         // 여기 위에까지는 에러가 날 수도 있으니(통신같은거 할 경우 등), 대처를 하기 위해서 asDriver를 써준다 (2)
             .drive(validationLabel.rx.text) // 여기서는 에러가 안나지만(1)
@@ -36,11 +65,13 @@ class ValidationViewController: UIViewController {
         // 반복되는 부분을 validation로 묶음
         // 단, 코드만을 묶어서 줄여줄 뿐 실행까지는 줄여줄 수 없음 => 그래서 옵져버블이랑 옵저버는 1:1
         // 그래서 이럴 떄는 위한 share()가 있음
-        let validation = nameTextField.rx.text // String?
+        
+        let validation = nameTextField.rx.text // String? // VC -> VM (Input)
             .orEmpty // 옵셔널 해제해줌, String
             .map { $0.count >= 8 } // Bool
             .share() // share 대신에 driver, asdriver 로 써볼 수도 있음
 
+        
         validation
             .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden) // subscribe해줘도 되지만 bind로 해줌. (UI 특성을 살리고, error나 complete결과를 만날 필요가 없을때는 bind를 씀)
             .disposed(by: disposeBag)
@@ -57,7 +88,7 @@ class ValidationViewController: UIViewController {
         
         
         // Stream, Sequence 이 두개는 거의 동의어라고 생각해주시오~
-        stepButton.rx.tap
+        stepButton.rx.tap // VC -> VM (Input)
             .bind { _ in
                 print("show alert")
             }
@@ -105,46 +136,45 @@ class ValidationViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
-        
-        let sampleInt = Observable<Int>.create { observer in
-            observer.onNext(Int.random(in: 1...100))
-            return Disposables.create() // Disposables 정의 확인해보면 그냥 비어있다.
-        }
-        
-        sampleInt.subscribe { value in
-            print("sampleInt: \(value)")
-        }
-        .disposed(by: disposeBag)
-        
-        sampleInt.subscribe { value in
-            print("sampleInt: \(value)")
-        }
-        .disposed(by: disposeBag)
-        
-        sampleInt.subscribe { value in
-            print("sampleInt: \(value)")
-        }
-        .disposed(by: disposeBag)
-        
+//        let sampleInt = Observable<Int>.create { observer in
+//            observer.onNext(Int.random(in: 1...100))
+//            return Disposables.create() // Disposables 정의 확인해보면 그냥 비어있다.
+//        }
+//
+//        sampleInt.subscribe { value in
+//            print("sampleInt: \(value)")
+//        }
+//        .disposed(by: disposeBag)
+//
+//        sampleInt.subscribe { value in
+//            print("sampleInt: \(value)")
+//        }
+//        .disposed(by: disposeBag)
+//
+//        sampleInt.subscribe { value in
+//            print("sampleInt: \(value)")
+//        }
+//        .disposed(by: disposeBag)
         
         
-        let subjectInt = BehaviorSubject(value: 0)
-        subjectInt.onNext(Int.random(in: 1...100))
         
-        subjectInt.subscribe { value in
-            print("subjectInt: \(value)")
-        }
-        .disposed(by: disposeBag)
-        
-        subjectInt.subscribe { value in
-            print("subjectInt: \(value)")
-        }
-        .disposed(by: disposeBag)
-        
-        subjectInt.subscribe { value in
-            print("subjectInt: \(value)")
-        }
-        .disposed(by: disposeBag)
+//        let subjectInt = BehaviorSubject(value: 0)
+//        subjectInt.onNext(Int.random(in: 1...100))
+//
+//        subjectInt.subscribe { value in
+//            print("subjectInt: \(value)")
+//        }
+//        .disposed(by: disposeBag)
+//
+//        subjectInt.subscribe { value in
+//            print("subjectInt: \(value)")
+//        }
+//        .disposed(by: disposeBag)
+//
+//        subjectInt.subscribe { value in
+//            print("subjectInt: \(value)")
+//        }
+//        .disposed(by: disposeBag)
         
         
     }
